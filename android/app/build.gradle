@@ -1,0 +1,46 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
+}
+
+android {
+    namespace = "com.example.final_habit"
+    compileSdk = 34  // Specify compileSdk version directly if using Java 17 and AGP 8.1.0
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_17  // Set JDK 17
+        targetCompatibility = JavaVersion.VERSION_17  // Set JDK 17
+    }
+
+    kotlinOptions {
+        jvmTarget = "17"  // Ensure Kotlin is set to use JDK 17
+    }
+
+    defaultConfig {
+        applicationId = "com.example.final_habit"
+        minSdk = 21  // Set minimum SDK directly if variable is undefined
+        targetSdk = 34  // Specify target SDK version
+        versionCode = 1
+        versionName = "1.0.0"
+    }
+
+   buildTypes {
+    release {
+        minifyEnabled true  
+        shrinkResources true  
+        proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+}
+
+}
+
+flutter {
+    source = "../.."  // Path to Flutter source
+}
+
+// If using a newer Gradle version, ensure compatibility with Java 17
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
